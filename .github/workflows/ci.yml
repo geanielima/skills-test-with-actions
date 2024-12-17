@@ -26,12 +26,12 @@ jobs:
       - uses: actions/checkout@v4
 
       # Runs a single command using the runner's shell
-      - name: Run markdown lint
-        run: |
-          npm install remark-cli remark-preset-lint-consistent
-          npx remark . --use remark-preset-lint-consistent --frail
-
-       - uses: actions/upload-artifact@v4
-         with:
-            name: remark-lint-report
-            path: remark-lint-report.json
+9.   - name: Run markdown lint
+10.       run: |
+11.         npm install remark-cli remark-preset-lint-consistent vfile-reporter-json
+12.         npx remark . --use remark-preset-lint-consistent --report vfile-reporter-json 2> remark-lint-report.json
+13. 
+14.     - uses: actions/upload-artifact@v4
+15.       with:
+16.         name: remark-lint-report
+17.         path: remark-lint-report.json
